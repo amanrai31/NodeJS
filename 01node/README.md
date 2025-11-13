@@ -4,6 +4,11 @@
 2. Added the start script in package.json 
 3. start/run the project using = `npm run start` || `npm start`
 
+### This app has 2 parts =>
+
+1. index.js & math.js(simple math's operation in modular way) - run by `npm start`
+2. file.js - write,read file - run by `node file.js`
+
 ## Important note
 
 If we import some module without any filePath then it import from `built-in node modules`

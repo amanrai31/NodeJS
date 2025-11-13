@@ -1,0 +1,25 @@
+
+# Ignore pushing the file which we create by running the file.js 
+sample.txt
+
+
+# Below is the standard .gitignore template
+
+# dependencies
+node_modules/
+
+# environment variables
+.env
+
+# logs
+logs/
+*.log
+npm-debug.log*
+
+# build output
+dist/
+build/
+
+# OS / editor files
+.DS_Store
+.vscode/
