@@ -1,5 +1,4 @@
-# NodeJS
-NodeJS Backend
+# NodeJS (Backend)
 
 NodeJs is open source, JS runtime environment(Where JS can run). (Made with chrome's V8 js engine + c++ => With some modification like removing DOM related thing such as `window` object, alert etc. && added things like cryptography, fileHandling etc.).
 
