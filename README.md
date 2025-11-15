@@ -6,7 +6,7 @@ NodeJs is open source, JS runtime environment(Where JS can run). (Made with chro
 
 - The request which comes to nodeJs server 1st comes to `event-queue`. `Event-loop` look make continuous watch over event-queue `FIFO operation`
 - `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking resolves normally & for blocking- a thread(from `thread pool`) is assigned to work on that task). Because we have limited number of treads(default =4, or equal to number of CPU-cores) so we avoid writting blocking code
-- Blocking operations(Sync) runs line by line(blocks next execution). Non-blocking runs asynchronously
+- Blocking operations(Sync) runs line by line(blocks next execution - do not use `event-loop`). Non-blocking runs asynchronously
 
 
 ### 1st NodeJS program
@@ -14,6 +14,9 @@ NodeJs is open source, JS runtime environment(Where JS can run). (Made with chro
 - make a folder, open that folder in IDE
 - make some JS file like hi.js & inside that file we have - console.log("hi");
 - Open terminal and go to the correct folder path & do `node <filename> = node hi` - it will print the output
+
+
+-----
 
 **If we are setting up new node project in our local machine** => We do not have any package.json file rn so we do `npm init` & it will ask some question(response accordingly).
 
