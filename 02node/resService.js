@@ -11,7 +11,7 @@ function resData(time) {
     if (hour > 16 && hour <= 20) {
         res = "Hi it's Evening in Bharat";
     }
-    if ((hour > 20 && hour <= 23) || (hour >= 20 && hour < 6)) {
+    if ((hour > 20 && hour <= 23) || (hour >= 0 && hour < 6)) {
         res = "Hi it's Night in Bharat";
     }
     console
