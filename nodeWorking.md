@@ -71,6 +71,8 @@ If CPU-heavy tasks block the main thread: Encryption loops || Image processing |
 
 Node offloads I/O tasks because they spend most time waiting and blocking the main thread makes no sense. It does NOT offload CPU tasks automatically because they require active work, and moving them costs overhead and breaks Node’s simplicity and predictability.
 
+**IMPORTANT NOTE :** Async operations are offloaded to the OS or libuv worker threads depending on the type of task, and synchronous code always runs on the main JavaScript thread.
+
 
 -----
 
