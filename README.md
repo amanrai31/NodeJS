@@ -4,11 +4,22 @@ NodeJs is open source, JS runtime environment(Where JS can run). (Made with chro
 
 - We can run JS outside browser, JS can talk to native machine because of c++ & now we can can create webServers in JS to.
 
+### How nodeJS works
+
 - The request which comes to nodeJs server 1st comes to `event-queue`. `Event-loop` look make continuous watch over event-queue `FIFO operation`
 - `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking resolves normally & for blocking- a thread(from `thread pool`) is assigned to work on that task). Because we have limited number of treads(default =4, or equal to number of CPU-cores) so we avoid writting blocking code
 - Blocking operations(Sync) runs line by line(blocks next execution - do not use `event-loop`). Non-blocking runs asynchronously
 
+```
+Call Stack
+↓
+process.nextTick() queue (HIGHEST priority)
+↓
+Microtask Queue (Promises, queueMicrotask)
+↓
+Event Loop Phase (Timers → PendingCallback → Poll → Check → CloseCallback)
 
+```
 ### 1st NodeJS program
 - Install nodeJS in your machine
 - make a folder, open that folder in IDE
