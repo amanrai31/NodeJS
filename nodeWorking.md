@@ -4,7 +4,7 @@
 
 - The request which comes to nodeJs server 1st comes to `event-queue`. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
 
-- `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking resolves normally & for blocking- a thread(from `libuv thread pool`) is assigned to work on that task). Because we have limited number of treads(default =4, or equal to number of CPU-cores) so we avoid writing blocking code
+- `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking resolves normally & offload work to OS or `libuv thread pool` for blocking - it executes in main node thread(JS thread) & because it engages the main thread itself(hence blocking the event-loop) we avoid using sync code. Number of treads(default =4, or equal to number of CPU-cores)
 
 - Blocking operations(Sync) runs line by line(blocks next execution - do not use `event-loop`) we use blocking operations to access external resource like file system work, DNS lookup, DB . Non-blocking runs asynchronously
 
