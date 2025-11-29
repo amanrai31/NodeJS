@@ -6,9 +6,9 @@ NodeJs is open source, JS runtime environment(Where JS can run). (Made with chro
 
 ### How nodeJS works
 
-- The request which comes to nodeJs server 1st comes to `event-queue`. `Event-loop` look make continuous watch over event-queue `FIFO operation`
-- `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking resolves normally & for blocking- a thread(from `thread pool`) is assigned to work on that task). Because we have limited number of treads(default =4, or equal to number of CPU-cores) so we avoid writting blocking code
-- Blocking operations(Sync) runs line by line(blocks next execution - do not use `event-loop`). Non-blocking runs asynchronously
+- The request which comes to nodeJs server 1st comes to `event-queue`. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
+- `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking resolves normally & for blocking- a thread(from `libuv thread pool`) is assigned to work on that task). Because we have limited number of treads(default =4, or equal to number of CPU-cores) so we avoid writting blocking code
+- Blocking operations(Sync) runs line by line(blocks next execution - do not use `event-loop`) we use blocking operations to access external resource like file system work, DNS lookup, DB . Non-blocking runs asynchronously
 
 ```
 Call Stack
