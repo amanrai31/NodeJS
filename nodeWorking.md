@@ -29,12 +29,8 @@ Node.js uses:
 So even though the JavaScript runtime is single-threaded, Node.js can still handle many concurrent operations efficiently.
 
 📌 Core Mechanisms Behind Concurrency
-Component        	Role
-Call Stack      	Executes JS code line-by-line (single thread)
-Event Loop      	Decides what task to run next
-Callback/Task Queue	Stores callbacks waiting to be executed
-libuv Thread Pool	Handles async file system work, DNS lookup, crypto, etc.
-OS Kernel	        Handles networking operations (non-blocking I/O)
+
+Call Stack =>	Executes JS code line-by-line (single thread). || Event Loop =>	Decides what task to run next || Callback/Task Queue =>	Stores callbacks waiting to be executed || libuv Thread Pool =>	Handles async file system work, DNS lookup, crypto, etc. || OS Kernel	 => Handles networking operations (non-blocking I/O)
 
 
 ----- 
