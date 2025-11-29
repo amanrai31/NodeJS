@@ -6,8 +6,6 @@
 
 - `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking resolves normally & offload work to OS or `libuv thread pool` for blocking - it executes in main node thread(JS thread) & because it engages the main thread itself(hence blocking the event-loop) we avoid using sync code. Number of treads(default =4, or equal to number of CPU-cores)
 
-- Blocking operations(Sync) runs line by line(blocks next execution - do not use `event-loop`) we use blocking operations to access external resource like file system work, DNS lookup, DB . Non-blocking runs asynchronously
-
 ```
 Call Stack
 ↓
