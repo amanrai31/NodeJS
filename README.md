@@ -4,6 +4,11 @@ NodeJs is open source, JS runtime environment(Where JS can run). (Made with chro
 
 - We can run JS outside browser, JS can talk to native machine because of c++ & now we can can create webServers in JS to.
 
+### 3 main parts of nodeJS
+
+1. V8 Engine - compiles JavaScript to machine code
+2. libuv - handles the event loop and asynchronous I/O operations
+3. Core modules - built-in modules like fs, http, etc.
 
 ### 1st NodeJS program
 - Install nodeJS in your machine
