@@ -6,7 +6,7 @@
 
 **Node design Philosophy => Optimized for I/O-bound concurrency, not CPU-bound computation.**
 
-- The request which comes to nodeJs server 1st comes to `event-queue`. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
+- The request which comes to nodeJs server 1st comes to `event-queue`. 
 
 - `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking task resolves normally & offloads work to OS or `libuv thread pool` and blocking task - it executes in main node thread(JS thread) & because it engages the main thread itself(hence blocking the event-loop) that is why we avoid using sync code. Number of treads(default =4, or equal to number of CPU-cores)
 
@@ -20,21 +20,11 @@ Call Stack -> process.nextTick() queue (HIGHEST priority) ->
 
 -----
 
-✅ How Node.js Handles Concurrency 
-
-Node.js uses:
-
-1. A single thread for executing JavaScript — the Event Loop
-
-2. Multiple system/worker threads behind the scenes for heavy tasks. WorkerNodes(True Parallelism)
-
-So even though the JavaScript runtime is single-threaded, Node.js can still handle many concurrent operations efficiently.
-
 📌 Core Mechanisms Behind Concurrency
 
-- `Event queue`(orchestrator) - Pools OS for new n/w events from OS and polls form taskQueue & microTaskQueue.
+- `Event queue`(orchestrator) - Pools OS for new n/w events from OS and polls form taskQueue & microTaskQueue. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
+- - `Event Loop` =>	When the call stack is empty, the event loop picks up the first item in the queue and pushes it onto the call stack.
 - `Call Stack` =>	Executes JS code line-by-line (single thread). If the task is async(non-blocking) it offloads the task to `livUV(having thread pool)` via **`Event-demultiplxer`**. Once the task is executed by the thread-pool OR OS it is pushed back to taskQueue/callbackQueue. `V8 EXECUTES WHATEVER IN CALLSTACK`
-- `Event Loop` =>	When the call stack is empty, the event loop picks up the first item in the queue and pushes it onto the call stack.
 - `Callback/Task Queue` =>	Stores callbacks(will push to event-queue once completed by threadPool) waiting to be executed by event-loop
 - `libuv Thread Pool` =>	Handles async file system work, DNS lookup, crypto, etc.
 - `OS Kernel`	 => Handles networking operations (non-blocking I/O)
