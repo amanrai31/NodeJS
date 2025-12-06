@@ -39,7 +39,7 @@ So even though the JavaScript runtime is single-threaded, Node.js can still hand
 
 - Event queue(orchestrator) - Pools OS for new n/w events from OS and polls form taskQueue & microTaskQueue and puts in CallStack.
 - Call Stack =>	Executes JS code line-by-line (single thread). If the task is async(non-blocking) it offloads the last to livUV(having thread pool). Once the task is executed by the thread-pool OR OS it is pushed back to taskQueue/callbackQueue.
-- Event Loop =>	Decides what task to run next(Continous lookup).
+- Event Loop =>	Decides what task to run next( It just do Continous lookup to callStack & executes whatever is there).
 - Callback/Task Queue =>	Stores callbacks(will push to event-queue once completed by threadPool) waiting to be executed by event-loop
 - libuv Thread Pool =>	Handles async file system work, DNS lookup, crypto, etc.
 - OS Kernel	 => Handles networking operations (non-blocking I/O)
