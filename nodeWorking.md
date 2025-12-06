@@ -73,12 +73,15 @@ If CPU-heavy tasks block the main thread: Encryption loops || Image processing |
 
 → They block the event loop → no concurrency. To avoid this, Node provides: `Worker Threads` || `Cluster Mode` || `Child Processes`
 
+#### Worker Threads/ Worker nodes
+
+Worker node is an isolated node environment `(mini nodeJS)` which has it's own event-driven arch composed of v8 & livUV 
+
 #### Summary
 
 Node offloads I/O tasks because they spend most time waiting and blocking the main thread makes no sense. It does NOT offload CPU tasks automatically because they require active work, and moving them costs overhead and breaks Node’s simplicity and predictability.
 
 **IMPORTANT NOTE :** Async operations are offloaded to the OS or libuv worker threads depending on the type of task, and synchronous code always runs on the main JavaScript thread.
-
 
 -----
 
