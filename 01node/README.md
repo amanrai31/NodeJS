@@ -12,3 +12,6 @@
 ## Important note
 
 If we import some module without any filePath then it import from `built-in node modules`
+
+
+`Diff b/w require & import => require is syncronoud & can be written inside condtions || import loads asynchronously(Always on top)`
