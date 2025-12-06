@@ -12,9 +12,10 @@ app.use(express.urlencoded({extended:false}));
 // GET at /user will return server side rendered HTML - Only browser can use (SSR)
 app.get("/users", (req,res)=>{
   const html = `
+  <h1>SERVER SIDE RENDERED HTML</h1>
       <ul>
         ${data.map((entry)=> {
-        return `<li> ${entry.first_name} </li>`
+        return `<li> <p style="color:red;" > ${entry.first_name} </p> </li>`
       }).join("")}</ul>
   `
   res.send(html);
