@@ -23,7 +23,9 @@ const myServer = http.createServer((req, res) => {
     })
 });
 
-myServer.listen(8000, () => console.log("Server listing"));
+const port = 8000;
+
+myServer.listen(port, () => console.log(`Server listing @ ${port}`));
 
 // We can use url library {npm i url}. Which is used to parse the url(protocol,domain,route,queryParam,http methods etc.). & we can use 
 // them inside switch case for queryParam or http verbs like what to send if method is GET or POST. But that will lead to a very confusing code
