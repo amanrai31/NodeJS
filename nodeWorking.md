@@ -1,5 +1,7 @@
 ### How nodeJS works
 
+[RESOURCE](https://www.youtube.com/watch?v=os7KcmJvtN4)
+
 **Node design Philosophy => Optimized for I/O-bound concurrency, not CPU-bound computation.**
 
 - The request which comes to nodeJs server 1st comes to `event-queue`. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
