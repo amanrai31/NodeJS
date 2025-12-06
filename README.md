@@ -14,7 +14,7 @@ NodeJs is open source, JS runtime environment(Where JS can run). (Made with chro
 - Install nodeJS in your machine
 - make a folder, open that folder in IDE
 - make some JS file like hi.js & inside that file we have - console.log("hi");
-- Open terminal and go to the correct folder path & do `node <filename> = node hi` - it will print the output
+- Open terminal and go to the correct folder path & do `node <filename> = node hi OR node hi.js` - it will print the output
 
 
 -----
