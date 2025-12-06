@@ -1,6 +1,8 @@
 ### How nodeJS works
 
-[RESOURCE](https://www.youtube.com/watch?v=os7KcmJvtN4)
+[EVENT LOOP RESOURCE](https://www.youtube.com/watch?v=os7KcmJvtN4)
+
+[WORKERTHREAD RESOURCE](https://www.youtube.com/watch?v=Vej327jN8WI)
 
 **Node design Philosophy => Optimized for I/O-bound concurrency, not CPU-bound computation.**
 
