@@ -6,7 +6,7 @@
 
 **Node design Philosophy => Optimized for I/O-bound concurrency, not CPU-bound computation.**
 
-- The request which comes to nodeJs server 1st comes to `event-queue`. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
+- The request which comes to nodeJs server 1st comes to `event-queue(can assume callStack)`. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
 
 - `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking resolves normally & offload work to OS or `libuv thread pool` for blocking - it executes in main node thread(JS thread) & because it engages the main thread itself(hence blocking the event-loop) we avoid using sync code. Number of treads(default =4, or equal to number of CPU-cores)
 
