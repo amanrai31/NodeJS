@@ -11,7 +11,8 @@
 - `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking task resolves normally & offloads work to OS or `libuv thread pool` and blocking task - it executes in main node thread(JS thread) & because it engages the main thread itself(hence blocking the event-loop) that is why we avoid using sync code. Number of treads(default =4, or equal to number of CPU-cores)
 
 ```
-Call Stack -> process.nextTick() queue (HIGHEST priority) -> Microtask Queue (Promises, queueMicrotask) -> Event Loop Phase (Timers → PendingCallback → Poll → Check → CloseCallback)
+Call Stack -> process.nextTick() queue (HIGHEST priority) ->
+-> Microtask Queue (Promises, queueMicrotask) -> Event Loop Phase (Timers → PendingCallback → Poll → Check → CloseCallback)
 ```
 
 **IMPORTANT NOTE =>** Refer javaScript repo. The same event loop diagram applies here, the only change is that you can assume LivUV instead of web-api.
