@@ -6,7 +6,7 @@
 
 **Node design Philosophy => Optimized for I/O-bound concurrency, not CPU-bound computation.**
 
-- The request which comes to nodeJs server 1st comes to `event-queue(can assume callStack)`. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
+- The request which comes to nodeJs server 1st comes to `event-queue`. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
 
 - `Blocking(Sync) & non-blocking(Async) operations` (Non-blocking task resolves normally & offloads work to OS or `libuv thread pool` and blocking task - it executes in main node thread(JS thread) & because it engages the main thread itself(hence blocking the event-loop) that is why we avoid using sync code. Number of treads(default =4, or equal to number of CPU-cores)
 
@@ -21,6 +21,7 @@ Event Loop Phase (Timers → PendingCallback → Poll → Check → CloseCallbac
 ```
 
 **IMPORTANT NOTE =>** Refer javaScript repo. The same event loop diagram applies here, the only change is that you can assume LivUV instead of web-api.
+**IMPORTANT NOTE =>** LivUV threadpool and workerNode are two different things.
 
 -----
 
@@ -30,13 +31,18 @@ Node.js uses:
 
 1. A single thread for executing JavaScript — the Event Loop
 
-2. Multiple system/worker threads behind the scenes for heavy tasks. WorkerNodes(True parallism)
+2. Multiple system/worker threads behind the scenes for heavy tasks. WorkerNodes(True Parallelism)
 
 So even though the JavaScript runtime is single-threaded, Node.js can still handle many concurrent operations efficiently.
 
 📌 Core Mechanisms Behind Concurrency
 
-Call Stack =>	Executes JS code line-by-line (single thread). || Event Loop =>	Decides what task to run next || Callback/Task Queue =>	Stores callbacks waiting to be executed || libuv Thread Pool =>	Handles async file system work, DNS lookup, crypto, etc. || OS Kernel	 => Handles networking operations (non-blocking I/O)
+- Event queue(orchestrator) - Pools OS for new n/w events from OS and polls form taskQueue & microTaskQueue and puts in CallStack.
+- Call Stack =>	Executes JS code line-by-line (single thread). If the task is async(non-blocking) it offloads the last to livUV(having thread pool). Once the task is executed by the thread-pool OR OS it is pushed back to taskQueue/callbackQueue.
+- Event Loop =>	Decides what task to run next(Continous lookup).
+- Callback/Task Queue =>	Stores callbacks(will push to event-queue once completed by threadPool) waiting to be executed by event-loop
+- libuv Thread Pool =>	Handles async file system work, DNS lookup, crypto, etc.
+- OS Kernel	 => Handles networking operations (non-blocking I/O)
 
 
 ----- 
@@ -51,7 +57,7 @@ fs.readFile("file.txt", () => {
 console.log("Hello");
 ```
 
-Execution order => JS thread starts fs.readFile || After Js execution the work is `offloaded to a thread pool` (not the main thread) || Main thread continues → prints "Hello" || When the background task completes, callback is added to queue || Event loop later executes callback → prints "File done"
+Execution order => JS thread starts fs.readFile || After Js execution, the work is `offloaded to a thread pool` (not the main thread) || Main thread continues → prints "Hello" || When the background task completes, callback is added to queue || Event loop later executes callback → prints "File done"
 
 #### Why Node.js Can Handle Thousands of Connections
 
