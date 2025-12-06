@@ -57,7 +57,7 @@ fs.readFile("file.txt", () => {
 console.log("Hello");
 ```
 
-Execution order => JS thread starts fs.readFile || After Js execution, the work is `offloaded to a thread pool` (not the main thread) || Main thread continues → prints "Hello" || When the background task completes, callback is added to queue || Event loop later executes callback → prints "File done"
+Execution order => JS thread starts fs.readFile || After Js execution, the work is `offloaded to a thread pool` (not the main thread) || Main thread continues → prints "Hello" || When the background task completes, pushed to taskQueue -> pushed to Event-queue via deMultiplxer -> callStack || Event loop later executes callback → prints "File done"
 
 #### Why Node.js Can Handle Thousands of Connections
 
