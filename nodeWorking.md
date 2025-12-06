@@ -30,7 +30,7 @@ Node.js uses:
 
 1. A single thread for executing JavaScript — the Event Loop
 
-2. Multiple system/worker threads behind the scenes for heavy tasks — via libuv Thread Pool
+2. Multiple system/worker threads behind the scenes for heavy tasks. WorkerNodes(True parallism)
 
 So even though the JavaScript runtime is single-threaded, Node.js can still handle many concurrent operations efficiently.
 
