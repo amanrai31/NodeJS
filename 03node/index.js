@@ -37,7 +37,7 @@ app.route("/api/users").get((req,res)=>{
         console.log("Error", err);
       }
       else{
-        res.send(`User added successfully. UserId : ${data.length}`);
+        res.status(201).send(`User added successfully. UserId : ${data.length}`);
       }
     })
 })
