@@ -52,6 +52,33 @@ Mongo is based on collections(equivalent of table in SQL) and documents
 
 => Command in code => `model.find({})` - returns all entries of that model | `model.findById(id)` - returns result against id | `model.findByIdAndUpdate` | `model.findByIdAndDelete`
 
+**While working in local =>** We start our DB(mongo) first => `sudo systemctl start mongod` => open mongo shell => `mongosh` => Now mongo shell is started, you can do all DB operations here. 
+
+#### Commonly used commands - 
+
+1. Orientation (Seeing what you have)
+- `show dbs` | `db` - return current db name | `show collections` - list all collections in current DB | `use <collection>` | `use <db>` | `exit`
+
+2. Read 
+- `db.<collectionName>.find()` - give all data
+- `db.<collectionName>.find({age:30})` - Give everyone whose age is 30
+- `db.<collectionName>.findOne({ name: "Alice" })` - Returns the first document that matches the criteria. Useful when searching by a unique ID or email.
+
+3. Write
+- `db.<Collection>.insertOne({ name: "Alice", age: 25 })`
+- `db.<Collection>.insertMany({ name: "Alice", age: 25 }, {name: "Aman", age: 24})`
+
+4. Update
+
+- `db.<collection>.updateOne( {filter}, {update actions} )` => db.myCollection.updateOne({ name: "Bob" },{ $set: { age: 31 } }) => If you forget `$set`, you might accidentally replace the entire document with just the updated field.
+
+- `db.<collection>.updateMany( {filter}, {update actions} )` => db.myCollection.updateMany({ city: "New York" },{ $set: { country: "USA" } })
+
+5. Delete
+
+- `db.myCollection.deleteOne({ name: "Aman" })`
+- `db.myCollection.deleteMany({ city: "Jaipur" })`
+
 -----
 
 ## MVC (Model View Controller)
