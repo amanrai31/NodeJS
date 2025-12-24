@@ -38,6 +38,7 @@ Call Stack -> process.nextTick() queue (HIGHEST priority) ->
 #### How It Actually Works
 
 ```js
+// Here it is callback based API, not Promise-based API
 fs.readFile("file.txt", () => {
   console.log("File done");
 });
