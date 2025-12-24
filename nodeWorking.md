@@ -22,12 +22,13 @@ Call Stack -> process.nextTick() queue (HIGHEST priority) ->
 📌 Core Mechanisms Behind Concurrency
 
 - `Event queue`(orchestrator) - Pools OS for new n/w events from OS and polls form taskQueue & microTaskQueue. `Event-loop` looksto make a continuous watch over event-queue `FIFO operation`
-- `Event Loop` =>	When the call stack is empty, the event loop picks up the first item in the queue and pushes it onto the call stack.
-- `Call Stack` =>	Executes JS code line-by-line (single thread). If the task is async(non-blocking) it offloads the task to `livUV(having thread pool)` via **`Event-demultiplxer`**. Once the task is executed by the thread-pool OR OS it is pushed back to taskQueue/callbackQueue. `V8 EXECUTES WHATEVER IN CALLSTACK`
+- `Event Loop` =>	When the call stack is empty, the event loop Executes **ALL microtasks** and Then dequeues **ONE macrotask** (setTimeout, I/O callback)
+- `Call Stack` =>	Executes JS code line-by-line (single thread). If the task is async(non-blocking) => 1. It offloads the task to `livUV(having thread pool)` via **`Event-demultiplxer`** (fs/crpto) || 2. Can offload to OS(n/w) || 3. PromiseCallback → microtask queue (via V8). Once the task is executed by the thread-pool(fs/crypto) OR OS(n/w) it is pushed back to taskQueue/callbackQueue. `V8 EXECUTES WHATEVER IN CALLSTACK`
 - `Callback/Task Queue` =>	Stores callbacks(will push to event-queue once completed by threadPool) waiting to be executed by event-loop
 - `libuv Thread Pool` =>	Handles async file system work, DNS lookup, crypto, etc.
 - `OS Kernel`	 => Handles networking operations (non-blocking I/O)
 
+**IMPORTANT NOTE :** Microtasks run after every macrotask execution, not just once per loop. WHEN MICROTASKQUEUE RUNS => CPU is blocked -> Event loop is frozen -> No timers, no I/O, nothing runs
 
 ----- 
 
