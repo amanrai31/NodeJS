@@ -14,6 +14,7 @@ Call Stack -> process.nextTick() queue (HIGHEST priority) ->
 ```
 
 **IMPORTANT NOTE =>** Refer javaScript repo. The same event loop diagram applies here, the only change is that you can assume LivUV instead of web-api.
+
 **IMPORTANT NOTE =>** `LivUV threadpool` and `workerNode` are two different things.
 
 -----
