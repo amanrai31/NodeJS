@@ -48,7 +48,13 @@ console.log("Hello");
 
 Execution order => JS thread starts fs.readFile || After Js execution, the work is `offloaded to a thread pool` (not the main thread) || Main thread continues → prints "Hello" || When the background task completes, pushed to taskQueue -> pushed to Event-queue via deMultiplxer -> callStack || Event loop later executes callback → prints "File done"
 
-#### How Node.js Can Handle Thousands of Connections
+```
+// Answer the order
+fs.readFile("file.txt", () => console.log("cb"));
+fs.promises.readFile("file.txt").then(() => console.log("promise"));
+console.log("sync");
+```
+### How Node.js Can Handle Thousands of Connections
 
 Node doesn't create a thread per request (unlike Java/Python threaded servers). Instead, it uses non-blocking I/O. The event loop makes requests asynchronous and efficient. This is why Node.js is excellent for:
 
@@ -56,13 +62,13 @@ Node doesn't create a thread per request (unlike Java/Python threaded servers). 
 - Realtime applications (Chat, Games, WebSockets)
 - Microservices
 
-#### When Node Fails?
+### When Node Fails?
 
 If CPU-heavy tasks block the main thread: Encryption loops || Image processing || Large JSON computation
 
 → They block the event loop → no concurrency. To avoid this, Node provides: `Worker Threads` || `Cluster Mode` || `Child Processes`
 
-#### Worker Threads/ Worker nodes
+### Worker Threads/ Worker nodes
 
 Worker node is an isolated node environment `(mini nodeJS)` which has it's own event-driven arch composed of v8 & livUV 
 
