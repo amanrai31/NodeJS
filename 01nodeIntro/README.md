@@ -6,7 +6,7 @@
 
 ### This app has 2 parts =>
 
-1. index.js & math.js(simple math's operation in modular way) - run by `npm start`
+1. index.js & math.js(simple math's operation in modular way) - run by `npm start` or `node index`
 2. file.js - write,read file - run by `node file.js`
 
 ## Important note
