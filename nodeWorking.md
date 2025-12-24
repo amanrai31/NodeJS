@@ -48,7 +48,7 @@ console.log("Hello");
 
 Execution order => JS thread starts fs.readFile || After Js execution, the work is `offloaded to a thread pool` (not the main thread) || Main thread continues → prints "Hello" || When the background task completes, pushed to taskQueue -> pushed to Event-queue via deMultiplxer -> callStack || Event loop later executes callback → prints "File done"
 
-```
+```js
 // Answer the order
 fs.readFile("file.txt", () => console.log("cb"));
 fs.promises.readFile("file.txt").then(() => console.log("promise"));
