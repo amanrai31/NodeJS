@@ -28,7 +28,7 @@ Call Stack -> process.nextTick() queue (HIGHEST priority) ->
 - `libuv Thread Pool` =>	Handles async file system work, DNS lookup, crypto, etc.
 - `OS Kernel`	 => Handles networking operations (non-blocking I/O)
 
-**IMPORTANT NOTE :** Microtasks run after every macrotask execution, not just once per loop. WHEN MICROTASKQUEUE RUNS => CPU is blocked -> Event loop is frozen -> No timers, no I/O, nothing runs
+**IMPORTANT NOTE :** Microtasks run after every macrotask execution, not just once per loop. WHEN MICROTASKQUEUE RUNS => CPU is blocked -> Event loop is frozen -> No timers, no I/O, nothing runs. So heavy sync task is dangerous inside promise-callback
 
 ----- 
 
